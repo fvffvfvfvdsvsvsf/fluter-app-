@@ -1,0 +1,140 @@
+import 'package:fluter/matrial.dart';
+
+void main(){
+    runApp(CalcuatorApp) ()
+}
+
+class CalcuatorApp Extends Statlesswidgit {
+@overwide 
+Widget Build (Build Context Context){
+Ruturn MatrialApp (
+Title 'Calcuator',
+Theme:ThemeData (
+    Piramy Swatch:Colors.Blue 
+);
+Home Calcuatorpage();
+Dubegshowchekedmodebaner:False 
+   )
+    }
+     }
+
+     Class Calcuatorpage 
+     Extends Statfulwidgit
+     {
+        @overwide 
+        -CalcuatorpageState
+        Createstate () =>
+        CalcuatorpageState();
+     }
+     class 
+     -CalcuatorpageState
+     Extends 
+     State<Calcuatorpage>
+     {
+        String_input=";
+        String_result=";
+
+        void 
+        -OnPressed(String text)
+        {
+            setState((){
+                if (Texte=='c') {
+                    -Input=";
+                     _result=";
+                }else if (text=='='){
+                 try {
+                    _result
+                    _calculate(_input);
+                 }Catch (e) {
+                    _result=
+                    _calculate (_input) 
+                 }
+            }else {
+                _input += text; 
+            }
+        }):
+     }
+     String 
+     _calculate(String_input)
+     {
+        Final Expression = 
+         Input.ReplaceAll('X','*',).replaceAll('÷','/');
+          final result = 
+           double.parse(_evaluate
+           (Expression).ToStringAs 
+           Fixed(2));
+           return
+            result.ToStringAs ();
+     }
+     } 
+double _evaluate (String Expression) 
+List <String> Tokens = Expression.Split(RegExp({*/+_}).Where((e))=>
+e.is.Notempaty)To List ();
+List (String) Oprator ={};
+List (double) Number ={};
+ 
+For (Var Tokens in Tokens)=(Nul){
+    Numbers.Add (double.parse (Tokens)){
+}
+else {
+    Oprator Add(Tokens) 
+}
+}
+double result = [0];
+ For (int i=0; i<Oprators.Length;i++ ){
+    Switch (Oprator[i]) {
+        case'+':
+         Result += Numbers[i+1]
+         break; 
+         case'-':
+         Result-=Numbers[i+1]
+         break;
+        case'*':
+        Result*=Numbers[i+1]
+        break;
+        case'/':
+        Result/=Numbers[i+1]
+        break;
+    }
+ }
+ return result;{
+ }
+Widget_BuildButton(String_text,{Color Color=Colors.Blue}){
+    return Expanded (
+        Chaild:EvaluateButton(
+            OnPressed:()=>_OnPressed(Text),
+            Chaild:Text (Texte,Style:Text Style (FontSize:24)),
+             Style:EvaluateButton.Styleform(Padding:Edgelnests.All(24)),
+             BackegroundColor:Color),
+    );
+}
+@overwide 
+Widget_Build(Build Context Context){
+    return Scafold ()
+        appBar:appBar(Title:Text('calcuator')),
+        Body:Coulmn()
+            Chaildern:[
+                Expanded(
+                    )Chaild:Container()
+                        Padding:Edgelnests.all(24),
+                         Alignment:Alignment.BottomRiht,
+                         Chaild:Coulmn()
+                            MainAxisAlignment:MainAxisAlignment.end 
+                            Chaildern:[
+                                Text(_input,Style:TextStyle(FontSize:32,Color:Colors.Black45)),
+                                 Text(_Rsul,Style:TextStyle(FontSize:48,FontWeight: 
+FontWeight,Bold))],
+            ];
+  };
+  Row (
+    Chaildern:['7','8','9','÷'].Map((e))=>_BuildButton(e).tolist(),
+    ),
+    Row(
+        Chaildern:['4','5','6','*×'].Map((e))=>_BuildButton(e).tolist(),
+    ),
+    Row(
+        Chaildern:['1','2','3','-'].Map((e))=>_BuildButton(e).tolist(),
+    ),
+    Row(
+        Chaildern:['C','0','=','+'].Map((e))=>_BuildButton(e).tolist(),
+    ),
